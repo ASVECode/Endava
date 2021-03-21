@@ -1,0 +1,14 @@
+createbus 10 0.7
+createtrain 300 0.4 3
+createairplane 250 1 true
+createairplane 250 2.7 true
+createtrain 80 0.4 3
+listvehicles
+createtrip Sofia vTurnovo 300 0
+createtrip Sofia vTurnovo 3 0
+createtrip vTurnovo Sofia 300 3
+listtrips
+createticket 0 30
+createticket 1 100
+listtickets
+exit
