@@ -1,0 +1,28 @@
+createbus 10 0.7
+createtrain 300 0.4 3
+createairplane 250 1 true
+createairplane 250 2.7 true
+createtrain 80 0.4 3
+listvehicles
+sortvehiclebypassengercapacity
+listvehicles
+sortvehiclebypriceperkilometer
+listvehicles
+sortvehiclesbytype
+listvehicles
+createtrip Sofia Yambol 300 0
+createtrip Sofia Gabrovo 3 0
+createtrip vTurnovo Sofia 300 3
+listtrips
+sorttripbydistance
+listtrips
+sorttripbydestination
+listtrips
+createticket 0 30
+createticket 1 100
+listtickets
+sortticketsbydestination
+listtickets
+sortticketbyprice
+listtickets
+exit
