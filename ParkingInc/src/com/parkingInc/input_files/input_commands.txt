@@ -1,15 +1,5 @@
 tryentercar
-tryentercar
-tryentercar
-tryentercar
-tryentercar
 exitcar
-listcars
-tryenterairplane
-listairplanes
-exitairplane
-tryenterairplane
-exitairplane
 
 
 
