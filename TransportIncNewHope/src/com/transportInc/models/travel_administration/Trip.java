@@ -80,6 +80,6 @@ public class Trip implements ITrip {
                 "startPoint: " + startPoint + '\n' +
                 "destination: " + destination + '\n' +
                 "distance: " + distance + '\n' +
-                "vehicle: " + vehicle;
+                 vehicle;
     }
 }

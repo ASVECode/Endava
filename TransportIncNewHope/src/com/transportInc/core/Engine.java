@@ -1,12 +1,17 @@
 package com.transportInc.core;
 
 import com.transportInc.comparators.*;
+
+import java.sql.*;
+
 import com.transportInc.core.factories.ITransportIncFactory;
 import com.transportInc.core.factories.TransportIncFactory;
 import com.transportInc.core.providers.ConsoleWriter;
 import com.transportInc.core.providers.FileReader;
+import com.transportInc.database.Connector;
 import com.transportInc.models.travel_administration.contracts.ITicket;
 import com.transportInc.models.travel_administration.contracts.ITrip;
+import com.transportInc.models.vehicles.Vehicle;
 import com.transportInc.models.vehicles.contracts.IVehicle;
 
 import java.io.File;
@@ -53,6 +58,45 @@ public class Engine {
             String[] commandParts = parseCommand(command);
             executeCommand(commandParts);
         }
+
+        Connection connection = Connector.getConnector().getConnection();
+
+        try {
+            String queryInsertVehicles = "INSERT INTO vehicles(name, type, price_per_kilometer, passenger_capacity)" + "VALUES (?, ?, ?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(queryInsertVehicles);
+            for (int i = 0, sz = vehicles.size(); i < sz; i++) {
+                preparedStatement.setString(1, ((Vehicle) vehicles.get(i)).getVehicleName().name());
+                preparedStatement.setString(2, ((Vehicle) vehicles.get(i)).getVehicleType().name());
+                preparedStatement.setDouble(3, ((Vehicle) vehicles.get(i)).getPricePerKilometer());
+                preparedStatement.setInt(4, ((Vehicle) vehicles.get(i)).getPassengerCapacity());
+                preparedStatement.executeUpdate();
+            }
+
+            String queryInsertTrips = "INSERT INTO trips(starting_point, destination, distance, vehicle_name)" + "VALUES (?, ?, ?, ?)";
+            preparedStatement = connection.prepareStatement(queryInsertTrips);
+
+            for (int i = 0, sz = trips.size(); i < sz; i++) {
+                preparedStatement.setString(1, (trips.get(i)).getStartPoint());
+                preparedStatement.setString(2, (trips.get(i)).getDestination());
+                preparedStatement.setInt(3, (trips.get(i)).getDistance());
+                preparedStatement.setString(4, (trips.get(i)).getVehicle().getVehicleName().name());
+                preparedStatement.executeUpdate();
+            }
+
+            String queryInsertTickets = "INSERT INTO tickets(trip_destination, price)" + "VALUES (?, ?)";
+            preparedStatement = connection.prepareStatement(queryInsertTickets);
+
+            for (int i = 0, sz = tickets.size(); i < sz; i++) {
+                preparedStatement.setString(1, (tickets.get(i)).getTrip().getDestination());
+                preparedStatement.setDouble(2, (tickets.get(i)).getPrice());
+                preparedStatement.executeUpdate();
+            }
+            connection.close();
+        } catch (
+                SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private void executeCommand(String[] commandParts) {
@@ -196,7 +240,7 @@ public class Engine {
         int tripIndex = Integer.parseInt(commandParts[1]);
         ITrip trip = trips.get(tripIndex);
         double price = Double.parseDouble(commandParts[2]);
-        ITicket ticket = factory.createTicket(trip, price);
+        ITicket ticket = factory.createTicket(trip, price, tripIndex);
         tickets.add(ticket);
     }
 

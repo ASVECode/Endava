@@ -1,5 +1,6 @@
 package com.transportInc.models.vehicles.contracts;
 
+import com.transportInc.models.enums.VehicleName;
 import com.transportInc.models.enums.VehicleType;
 
 public interface IVehicle {
@@ -8,4 +9,6 @@ public interface IVehicle {
     double getPricePerKilometer();
 
     VehicleType getVehicleType();
+
+    VehicleName getVehicleName();
 }

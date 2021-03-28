@@ -14,13 +14,12 @@ createtrip Sofia Yambol 300 0
 createtrip Sofia Gabrovo 3 0
 createtrip vTurnovo Sofia 300 3
 listtrips
-sorttripbydistance
 listtrips
-sorttripbydestination
 listtrips
 createticket 0 30
 createticket 1 100
 listtickets
+sorttripbydestination
 sortticketsbydestination
 listtickets
 sortticketbyprice

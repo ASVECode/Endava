@@ -6,4 +6,6 @@ public interface ITicket {
     ITrip getTrip ();
 
     double calculatePrice();
+
+    int getIndexTrip();
 }

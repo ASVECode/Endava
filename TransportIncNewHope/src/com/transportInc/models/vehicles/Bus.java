@@ -31,7 +31,7 @@ public class Bus extends Vehicle implements IBus {
     }
 
     @Override
-    protected VehicleName getVehicleName() {
+    public VehicleName getVehicleName() {
         return VehicleName.BUS;
     }
 

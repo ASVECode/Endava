@@ -24,7 +24,7 @@ public class Airplane extends Vehicle implements IAirplane {
     }
 
     @Override
-    protected VehicleName getVehicleName() {
+    public VehicleName getVehicleName() {
         return VehicleName.AIRPLANE;
     }
 }

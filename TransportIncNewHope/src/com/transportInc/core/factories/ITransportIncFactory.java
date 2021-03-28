@@ -16,5 +16,5 @@ public interface ITransportIncFactory {
 
     ITrip createTrip(String startingPoint, String destination, int distance, IVehicle vehicle);
 
-    ITicket createTicket(ITrip trip, double administrativeCosts);
+    ITicket createTicket(ITrip trip, double administrativeCosts, int tripIndex);
 }

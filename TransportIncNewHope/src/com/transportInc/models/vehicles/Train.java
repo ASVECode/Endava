@@ -45,7 +45,7 @@ public class Train extends Vehicle implements ITrain {
     }
 
     @Override
-    protected VehicleName getVehicleName() {
+    public VehicleName getVehicleName() {
         return VehicleName.TRAIN;
     }
 

@@ -38,7 +38,7 @@ public abstract class Vehicle {
 
     public abstract VehicleType getVehicleType();
 
-    protected abstract VehicleName getVehicleName();
+    public abstract VehicleName getVehicleName();
 
     public String toString() {
         return  "Vehicle name: " + this.getVehicleName() + '\n' +

@@ -30,8 +30,8 @@ public class TransportIncFactory implements ITransportIncFactory {
         return new Trip(startPoint, destination, distance, vehicle);
     }
 
-    public ITicket createTicket(ITrip trip, double administrativeCosts)
+    public ITicket createTicket(ITrip trip, double administrativeCosts, int tripIndex)
     {
-        return new Ticket(trip, administrativeCosts);
+        return new Ticket(trip, administrativeCosts,tripIndex);
     }
 }
