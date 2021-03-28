@@ -5,7 +5,7 @@ import java.sql.*;
 public class Connector {
     private static final String URL = "jdbc:mysql://localhost:3306/transport_inc_new_hope";
     private static final String USER = "root";
-    private static final String PASSWORD = "159753Code";
+    private static final String PASSWORD = "root";
 
     private static Connector connector;
     private Connection connection;
